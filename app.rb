@@ -1,12 +1,12 @@
 require "bundler/setup"
 Bundler.require
-
 require "json"
 require "open-uri"
 
+query = ARGV[0]
+
 api_key = ENV["GOOGLE_API_KEY"]
 engine_id = ENV["SEARCH_ENGINE_ID"]
-query = "寿司"
 url = "https://www.googleapis.com/customsearch/v1?key=#{api_key}&cx=#{engine_id}&q=#{query}"
 
 conn = Faraday.new(url: URI.encode(url))
@@ -15,7 +15,7 @@ result = JSON.parse(response.body)
 
 
 image_url = result["items"].map do |item|
-  if item["pagemap"]
+  if item["pagemap"] && item["pagemap"]["cse_image"]
     item["pagemap"]["cse_image"].first["src"]
   end
 end.compact
