@@ -1,5 +1,4 @@
-# A sample Gemfile
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "faraday"
-gem "pry-byebug"
+# Specify your gem's dependencies in google_image_fetcher.gemspec
+gemspec
