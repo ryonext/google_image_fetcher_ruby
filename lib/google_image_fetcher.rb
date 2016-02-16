@@ -1,5 +1,6 @@
 require "google_image_fetcher/version"
-
-module GoogleImageFetcher
-  # Your code goes here...
-end
+require "google_image_fetcher/CLI"
+require "bundler/setup"
+Bundler.require
+require "json"
+require "open-uri"
