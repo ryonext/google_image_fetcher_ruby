@@ -1,4 +1,7 @@
+require "json"
+require "open-uri"
 require "thor"
+require "faraday"
 
 module GoogleImageFetcher
   class CLI < Thor
@@ -7,10 +10,8 @@ module GoogleImageFetcher
     desc "execute", "Fetch images from Google"
     def execute
       query = ARGV[0]
-
       api_key = ENV["GOOGLE_API_KEY"]
       engine_id = ENV["SEARCH_ENGINE_ID"]
-
       url = "https://www.googleapis.com/customsearch/v1?key=#{api_key}&cx=#{engine_id}&q=#{query}&searchType=image"
       conn = Faraday.new(url: URI.encode(url))
       response = conn.get
@@ -29,5 +30,6 @@ module GoogleImageFetcher
           end
         end
       end
+    end
   end
 end
