@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require "../lib/google_image_fetcher"
+require "google_image_fetcher"
 
 GoogleImageFetcher::CLI.start(ARGV)
