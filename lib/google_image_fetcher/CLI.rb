@@ -18,7 +18,7 @@ module GoogleImageFetcher
 
       image_url = result["items"].map {|item| item["link"] }
 
-      dir_path = "data/#{query}"
+      dir_path = "#{query}"
       FileUtils.mkdir_p(dir_path)
 
       image_url.each do |url|
