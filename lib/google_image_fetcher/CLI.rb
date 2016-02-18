@@ -8,7 +8,7 @@ module GoogleImageFetcher
     default_task :execute
 
     desc "execute", "Fetch images from Google"
-    def execute(query)
+    def execute(a, query)
       api_key = ENV["GOOGLE_API_KEY"]
       engine_id = ENV["SEARCH_ENGINE_ID"]
       url = "https://www.googleapis.com/customsearch/v1?key=#{api_key}&cx=#{engine_id}&q=#{query}&searchType=image"
