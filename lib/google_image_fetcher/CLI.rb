@@ -2,31 +2,18 @@ require "json"
 require "open-uri"
 require "thor"
 require "faraday"
+require_relative "./fetcher"
 
 module GoogleImageFetcher
   class CLI < Thor
     desc "search", "Fetch images from Google"
     def search(query)
-      api_key = ENV["GOOGLE_API_KEY"]
-      engine_id = ENV["SEARCH_ENGINE_ID"]
-      url = "https://www.googleapis.com/customsearch/v1?key=#{api_key}&cx=#{engine_id}&q=#{query}&searchType=image"
-      conn = Faraday.new(url: URI.encode(url))
+      search_url = Fetcher.search_url(query)
+      conn = Faraday.new(url: URI.encode(search_url))
       response = conn.get
       result = JSON.parse(response.body)
-
       image_url = result["items"].map {|item| item["link"] }
-
-      dir_path = "#{query}"
-      FileUtils.mkdir_p(dir_path)
-
-      image_url.each do |url|
-        filename = "#{dir_path}/#{File.basename(url)}"
-        open(filename, 'wb') do |file|
-          open(url) do |data|
-            file.write(data.read)
-          end
-        end
-      end
+      Fetcher.store(query, image_url)
     end
   end
 end
