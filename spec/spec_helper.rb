@@ -1,4 +1,6 @@
 require "google_image_fetcher"
+require 'bundler/setup'
+Bundler.require(:default, :development)
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

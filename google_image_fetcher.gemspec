@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "faraday"
   spec.add_dependency "thor"
   spec.add_development_dependency "bundler", "~> 1.11"
+  spec.add_development_dependency "faker"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry-byebug"
   spec.add_development_dependency "rspec"
