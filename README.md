@@ -1,28 +1,33 @@
 # GoogleImageFetcher
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/google_image_fetcher`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem fetches images from Google Image Search.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'google_image_fetcher'
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install google_image_fetcher
+$ gem install google_image_fetcher
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Before you use this gem, you have to get api key for google custom search, and enable image search.
+
+https://cse.google.co.jp
+
+When you get api key and search engine id, please set these environmental variables.
+
+```
+export GOOGLE_API_KEY={your-api-key}
+export SEARCH_ENGINE_ID={your-custome-search-engine-id}
+```
+
+After thar, you can fetch images by this command.
+
+```
+google_image search {keyword}
+```
+
+you can get images related to keyword.
 
 ## Development
 
